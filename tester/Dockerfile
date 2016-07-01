@@ -1,4 +1,4 @@
-FROM golang:latest
+FROM golang:1.6.1
 MAINTAINER CenturyLink Labs <clt-labs-futuretech@centurylink.com>
 
 VOLUME /src
