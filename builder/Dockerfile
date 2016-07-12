@@ -1,7 +1,6 @@
 FROM golang:1.6.1
-MAINTAINER CenturyLink Labs <clt-labs-futuretech@centurylink.com>
 
-RUN apt-get update && apt-get install -y upx-ucl
+RUN apt-get update && apt-get install -y upx-ucl libsystemd-dev
 
 # Install Docker binary
 RUN wget -nv \

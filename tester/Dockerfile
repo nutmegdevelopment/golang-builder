@@ -1,5 +1,6 @@
 FROM golang:1.6.1
-MAINTAINER CenturyLink Labs <clt-labs-futuretech@centurylink.com>
+
+RUN apt-get update && apt-get install -y libsystemd-dev
 
 VOLUME /src
 WORKDIR /src
