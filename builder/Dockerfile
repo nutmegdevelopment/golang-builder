@@ -1,4 +1,4 @@
-FROM golang:1.6.1
+FROM golang:1.8
 
 RUN apt-get update && apt-get install -y upx-ucl libsystemd-dev
 
@@ -9,7 +9,6 @@ RUN wget -nv \
 
 RUN go get github.com/pwaller/goupx
 
-VOLUME /src
 WORKDIR /src
 
 COPY build_environment.sh /
