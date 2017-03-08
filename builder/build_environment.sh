@@ -31,8 +31,9 @@ ln -sf /src "$pkgPath"
 
 if [ -e "$pkgPath/vendor" ];
 then
-    # Enable vendor experiment
-    export GO15VENDOREXPERIMENT=1
+    # Do nothing
+    # GO15VENDOREXPERIMENT behaviour is default in go 1.7
+    echo "Using vendor packages..."
 elif [ -e "$pkgPath/Godeps/_workspace" ];
 then
   # Add local godeps dir to GOPATH
