@@ -17,4 +17,28 @@ then
   exit 992
 fi
 
-go get -t -d -v ./...
+# Grab just first path listed in GOPATH
+goPath="${GOPATH%%:*}"
+
+# Construct Go package path
+pkgPath="$goPath/src/$pkgName"
+
+# Set-up src directory tree in GOPATH
+mkdir -p "$(dirname "$pkgPath")"
+
+# Link source dir into GOPATH
+ln -sf /src "$pkgPath"
+
+if [ -e "$pkgPath/vendor" ];
+then
+    # Do nothing
+    # GO15VENDOREXPERIMENT behaviour is default in go 1.7
+    echo "Using vendor packages..."
+elif [ -e "$pkgPath/Godeps/_workspace" ];
+then
+  # Add local godeps dir to GOPATH
+  GOPATH=$pkgPath/Godeps/_workspace:$GOPATH
+else
+  # Get all package dependencies
+  go get -t -d -v ./...
+fi
