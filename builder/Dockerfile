@@ -1,6 +1,9 @@
 FROM golang:1.9.3-stretch
 
-RUN apt-get update && apt-get install -y upx-ucl libsystemd-dev
+RUN apt-get update && apt-get install -y \
+  libsystemd-dev \
+  upx-ucl \
+  && rm -rf /var/lib/apt/lists/*
 
 # Install Docker binary
 RUN wget -nv \
