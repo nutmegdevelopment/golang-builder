@@ -31,9 +31,16 @@ ln -sf /src "$pkgPath"
 
 if [ -e "$pkgPath/vendor" ];
 then
-    # Do nothing
-    # GO15VENDOREXPERIMENT behaviour is default in go 1.7
     echo "Using vendor packages..."
+elif [ -f "$pkgPath/Gopkg.lock" ];
+then
+    echo "Using dep package lock files to get dependencies"
+    go get -u github.com/golang/dep/cmd/dep
+
+    cd "$pkgPath" || exit 1
+
+    dep ensure -v
+
 elif [ -e "$pkgPath/Godeps/_workspace" ];
 then
   # Add local godeps dir to GOPATH

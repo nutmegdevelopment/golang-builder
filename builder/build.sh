@@ -21,6 +21,7 @@ echo "Building $pkgName"
 (
   CGO_ENABLED=${CGO_ENABLED:-0} \
   go build \
+  -v \
   -a \
   ${output} \
   --installsuffix cgo \
