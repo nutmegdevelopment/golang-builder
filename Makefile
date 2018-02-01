@@ -9,10 +9,10 @@ GOSS ?= dgoss
 build:
 	@echo ">> building golang-builder"
 	$(DOCKER) build -t $(DOCKER_REPO_NAME)/$(DOCKER_BUILDER_IMAGE_NAME):$(DOCKER_IMAGE_TAG) -f builder/Dockerfile builder/
-	$(DOCKER) tag $(DOCKER_REPO_NAME)/$(DOCKER_BUILDER_IMAGE_NAME):$(DOCKER_IMAGE_TAG) $(DOCKER_REPO_NAME)/$(DOCKER_BUILDER_IMAGE_NAME):latest
+	$(DOCKER) build -t $(DOCKER_REPO_NAME)/$(DOCKER_BUILDER_IMAGE_NAME):latest -f builder/Dockerfile builder/
 	@echo ">> building golang-tester"
 	$(DOCKER) build -t $(DOCKER_REPO_NAME)/$(DOCKER_TESTER_IMAGE_NAME):$(DOCKER_IMAGE_TAG) -f tester/Dockerfile tester/
-	$(DOCKER) tag $(DOCKER_REPO_NAME)/$(DOCKER_TESTER_IMAGE_NAME):$(DOCKER_IMAGE_TAG) $(DOCKER_REPO_NAME)/$(DOCKER_TESTER_IMAGE_NAME):latest
+	$(DOCKER) build -t $(DOCKER_REPO_NAME)/$(DOCKER_TESTER_IMAGE_NAME):latest -f tester/Dockerfile tester/
 
 push:
 	@echo ">> pushing golang-builder image"
