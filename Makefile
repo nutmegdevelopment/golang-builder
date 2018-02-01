@@ -17,7 +17,7 @@ build:
 push:
 	@echo ">> pushing golang-builder image"
 	$(DOCKER) push $(DOCKER_REPO_NAME)/$(DOCKER_BUILDER_IMAGE_NAME):$(DOCKER_IMAGE_TAG)
-	$(DOCKER) push $(DOCKER_REPO_NAME)/$(DOCKER_BUILDER_IMAGE_NAME)latest
+	$(DOCKER) push $(DOCKER_REPO_NAME)/$(DOCKER_BUILDER_IMAGE_NAME):latest
 	@echo ">> pushing golang-tester image"
 	$(DOCKER) push $(DOCKER_REPO_NAME)/$(DOCKER_TESTER_IMAGE_NAME):$(DOCKER_IMAGE_TAG)
 	$(DOCKER) push $(DOCKER_REPO_NAME)/$(DOCKER_TESTER_IMAGE_NAME):latest
