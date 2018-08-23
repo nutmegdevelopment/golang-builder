@@ -1,10 +1,10 @@
-DOCKER ?= docker
-DOCKER_REPO_NAME ?= localhost
-DOCKER_TESTER_IMAGE_NAME ?= golang-tester
+DOCKER                    ?= docker
+DOCKER_REPO_NAME          ?= localhost
+DOCKER_TESTER_IMAGE_NAME  ?= golang-tester
 DOCKER_BUILDER_IMAGE_NAME ?= golang-builder
-GOLANG_VERSION ?= 1.9.3
-DOCKER_IMAGE_TAG ?= $(GOLANG_VERSION)-$(subst /,-,$(shell git rev-parse --abbrev-ref HEAD))
-GOSS ?= dgoss
+GOLANG_VERSION            ?= 1.10.3
+DOCKER_IMAGE_TAG          ?= $(GOLANG_VERSION)-$(subst /,-,$(shell git rev-parse --abbrev-ref HEAD))
+GOSS                      ?= dgoss
 
 build:
 	@echo ">> building golang-builder"

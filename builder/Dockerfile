@@ -1,4 +1,4 @@
-FROM golang:1.9.3-stretch
+FROM golang:1.10.3-stretch
 
 RUN apt-get update && apt-get install -y \
   libsystemd-dev \
